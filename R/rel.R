@@ -4,8 +4,15 @@
 #'
 #' @name rel
 #' @export
-rel_from_df <- function(con, df) {
-  UseMethod("rel_from_df")
+new_relational <- function(..., class = NULL) {
+  structure(..., class = c(class, "relational"))
+}
+
+#' @export
+rel_from_df <- function(df) {
+  # FIXME: make generic
+  stopifnot(is.data.frame(df))
+  new_relational(list(df), class = c("relational_df"))
 }
 
 #' @rdname rel

@@ -1,9 +1,4 @@
 #' @export
-rel_from_df.relational_df <- function(rel) {
-  stop("NYI")
-}
-
-#' @export
 rel_to_df.relational_df <- function(rel) {
   stop("NYI")
 }

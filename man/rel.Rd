@@ -2,7 +2,7 @@
 % Please edit documentation in R/rel.R
 \name{rel}
 \alias{rel}
-\alias{rel_from_df}
+\alias{new_relational}
 \alias{rel_to_df}
 \alias{rel_filter}
 \alias{rel_project}
@@ -19,7 +19,7 @@
 \alias{rel_names}
 \title{Relational API}
 \usage{
-rel_from_df(con, df)
+new_relational(..., class = NULL)
 
 rel_to_df(rel)
 
