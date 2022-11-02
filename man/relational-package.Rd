@@ -4,16 +4,16 @@
 \name{relational-package}
 \alias{relational}
 \alias{relational-package}
-\title{relational: What the Package Does (One Line, Title Case)}
+\title{relational: Relations and Expressions}
 \description{
-What the package does (one paragraph).
+Represent expressions and provide a set of generics for transformations of tables (relations).
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/krlmlr/defmacro}
-  \item \url{https://krlmlr.github.io/defmacro}
-  \item Report bugs at \url{https://github.com/krlmlr/defmacro/issues}
+  \item \url{https://github.com/duckdblabs/relational}
+  \item \url{https://duckdblabs.github.io/relational}
+  \item Report bugs at \url{https://github.com/duckdblabs/relational/issues}
 }
 
 }
