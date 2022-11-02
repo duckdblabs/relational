@@ -1,3 +1,17 @@
+#' Data frame relational backend
+#'
+#' TBD.
+#'
+#' @param df A data frame.
+#' @return A relational object.
+#'
+#' @export
+rel_from_df <- function(df) {
+  # FIXME: make generic
+  stopifnot(is.data.frame(df))
+  new_relational(list(df), class = "relational_df")
+}
+
 #' @export
 rel_to_df.relational_df <- function(rel) {
   rel[[1L]]

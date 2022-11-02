@@ -2,17 +2,13 @@
 #'
 #' TBD.
 #'
+#' @param ... Passed on to [structure()]
+#' @param class Classes added in front of the `"relational"` base class
+#'
 #' @name rel
 #' @export
 new_relational <- function(..., class = NULL) {
-  structure(..., class = c(class, "relational"))
-}
-
-#' @export
-rel_from_df <- function(df) {
-  # FIXME: make generic
-  stopifnot(is.data.frame(df))
-  new_relational(list(df), class = c("relational_df"))
+  structure(..., class = unique(c(class, "relational")))
 }
 
 #' @rdname rel
