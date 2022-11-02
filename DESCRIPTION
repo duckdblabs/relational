@@ -6,7 +6,7 @@ Authors@R:
     person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1416-3412"))
 Description: What the package does (one paragraph).
-License: GPL-3
+License: MIT + file LICENSE
 URL: https://github.com/krlmlr/defmacro, https://krlmlr.github.io/defmacro
 BugReports: https://github.com/krlmlr/defmacro/issues
 Encoding: UTF-8
