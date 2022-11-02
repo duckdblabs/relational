@@ -17,8 +17,8 @@ rel_to_df <- function(rel, ...) {
   UseMethod("rel_to_df")
 }
 
-#' Lazily filter a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Lazily filter a relation object
+#' @param rel the relation object
 #' @param exprs a list of DuckDB expressions to filter by
 #' @return the now filtered `duckdb_relation` object
 #' @export
@@ -29,8 +29,8 @@ rel_filter <- function(rel, exprs, ...) {
   UseMethod("rel_filter")
 }
 
-#' Lazily project a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Lazily project a relation object
+#' @param rel the relation object
 #' @param exprs a list of DuckDB expressions to project
 #' @return the now projected `duckdb_relation` object
 #' @export
@@ -41,8 +41,8 @@ rel_project <- function(rel, exprs, ...) {
   UseMethod("rel_project")
 }
 
-#' Lazily aggregate a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Lazily aggregate a relation object
+#' @param rel the relation object
 #' @param groups a list of DuckDB expressions to group by
 #' @param aggregates a (optionally named) list of DuckDB expressions with aggregates to compute
 #' @return the now aggregated `duckdb_relation` object
@@ -55,8 +55,8 @@ rel_aggregate <- function(rel, groups, aggregates, ...) {
   UseMethod("rel_aggregate")
 }
 
-#' Lazily reorder a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Lazily reorder a relation object
+#' @param rel the relation object
 #' @param orders a list of DuckDB expressions to order by
 #' @return the now aggregated `duckdb_relation` object
 #' @export
@@ -67,9 +67,9 @@ rel_order <- function(rel, orders, ...) {
   UseMethod("rel_order")
 }
 
-#' Lazily INNER join two DuckDB relation objects
-#' @param left the left-hand-side DuckDB relation object
-#' @param right the right-hand-side DuckDB relation object
+#' Lazily INNER join two relation objects
+#' @param left the left-hand-side relation object
+#' @param right the right-hand-side relation object
 #' @param conds a list of DuckDB expressions to use for the join
 #' @return a new `duckdb_relation` object resulting from the join
 #' @export
@@ -88,8 +88,8 @@ rel_limit <- function(rel, n, ...) {
   UseMethod("rel_limit")
 }
 
-#' Lazily compute a distinct result on a DuckDB relation object
-#' @param rel the input DuckDB relation object
+#' Lazily compute a distinct result on a relation object
+#' @param rel the input relation object
 #' @return a new `duckdb_relation` object with distinct rows
 #' @export
 #' @examples
@@ -105,8 +105,8 @@ rel_tostring <- function(rel, ...) {
   UseMethod("rel_tostring")
 }
 
-#' Print the EXPLAIN output for a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Print the EXPLAIN output for a relation object
+#' @param rel the relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -115,8 +115,8 @@ rel_explain <- function(rel, ...) {
   UseMethod("rel_explain")
 }
 
-#' Get the internal alias for a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Get the internal alias for a relation object
+#' @param rel the relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -125,8 +125,8 @@ rel_alias <- function(rel, ...) {
   UseMethod("rel_alias")
 }
 
-#' Set the internal alias for a DuckDB relation object
-#' @param rel the DuckDB relation object
+#' Set the internal alias for a relation object
+#' @param rel the relation object
 #' @param alias the new alias
 #' @export
 #' @examples

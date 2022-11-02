@@ -2,12 +2,12 @@
 % Please edit documentation in R/rel.R
 \name{rel_order}
 \alias{rel_order}
-\title{Lazily reorder a DuckDB relation object}
+\title{Lazily reorder a relation object}
 \usage{
 rel_order(rel, orders, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 
 \item{orders}{a list of DuckDB expressions to order by}
 }
@@ -15,7 +15,7 @@ rel_order(rel, orders, ...)
 the now aggregated \code{duckdb_relation} object
 }
 \description{
-Lazily reorder a DuckDB relation object
+Lazily reorder a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

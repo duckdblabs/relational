@@ -2,15 +2,15 @@
 % Please edit documentation in R/rel.R
 \name{rel_alias}
 \alias{rel_alias}
-\title{Get the internal alias for a DuckDB relation object}
+\title{Get the internal alias for a relation object}
 \usage{
 rel_alias(rel, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 }
 \description{
-Get the internal alias for a DuckDB relation object
+Get the internal alias for a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

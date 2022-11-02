@@ -2,15 +2,15 @@
 % Please edit documentation in R/rel.R
 \name{rel_explain}
 \alias{rel_explain}
-\title{Print the EXPLAIN output for a DuckDB relation object}
+\title{Print the EXPLAIN output for a relation object}
 \usage{
 rel_explain(rel, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 }
 \description{
-Print the EXPLAIN output for a DuckDB relation object
+Print the EXPLAIN output for a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

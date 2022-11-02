@@ -2,12 +2,12 @@
 % Please edit documentation in R/rel.R
 \name{rel_filter}
 \alias{rel_filter}
-\title{Lazily filter a DuckDB relation object}
+\title{Lazily filter a relation object}
 \usage{
 rel_filter(rel, exprs, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 
 \item{exprs}{a list of DuckDB expressions to filter by}
 }
@@ -15,7 +15,7 @@ rel_filter(rel, exprs, ...)
 the now filtered \code{duckdb_relation} object
 }
 \description{
-Lazily filter a DuckDB relation object
+Lazily filter a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

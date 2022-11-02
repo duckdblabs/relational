@@ -2,17 +2,17 @@
 % Please edit documentation in R/rel.R
 \name{rel_set_alias}
 \alias{rel_set_alias}
-\title{Set the internal alias for a DuckDB relation object}
+\title{Set the internal alias for a relation object}
 \usage{
 rel_set_alias(rel, alias, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 
 \item{alias}{the new alias}
 }
 \description{
-Set the internal alias for a DuckDB relation object
+Set the internal alias for a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

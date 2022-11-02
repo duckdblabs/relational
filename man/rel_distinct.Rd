@@ -2,18 +2,18 @@
 % Please edit documentation in R/rel.R
 \name{rel_distinct}
 \alias{rel_distinct}
-\title{Lazily compute a distinct result on a DuckDB relation object}
+\title{Lazily compute a distinct result on a relation object}
 \usage{
 rel_distinct(rel, ...)
 }
 \arguments{
-\item{rel}{the input DuckDB relation object}
+\item{rel}{the input relation object}
 }
 \value{
 a new \code{duckdb_relation} object with distinct rows
 }
 \description{
-Lazily compute a distinct result on a DuckDB relation object
+Lazily compute a distinct result on a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)

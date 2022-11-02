@@ -2,12 +2,12 @@
 % Please edit documentation in R/rel.R
 \name{rel_aggregate}
 \alias{rel_aggregate}
-\title{Lazily aggregate a DuckDB relation object}
+\title{Lazily aggregate a relation object}
 \usage{
 rel_aggregate(rel, groups, aggregates, ...)
 }
 \arguments{
-\item{rel}{the DuckDB relation object}
+\item{rel}{the relation object}
 
 \item{groups}{a list of DuckDB expressions to group by}
 
@@ -17,7 +17,7 @@ rel_aggregate(rel, groups, aggregates, ...)
 the now aggregated \code{duckdb_relation} object
 }
 \description{
-Lazily aggregate a DuckDB relation object
+Lazily aggregate a relation object
 }
 \examples{
 rel <- rel_from_df(mtcars)
