@@ -16,7 +16,7 @@ rel_inner_join(left, right, conds, ...)
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
-a new \code{duckdb_relation} object resulting from the join
+a new relation object resulting from the join
 }
 \description{
 TBD.

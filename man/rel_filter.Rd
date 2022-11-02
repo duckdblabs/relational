@@ -14,7 +14,7 @@ rel_filter(rel, exprs, ...)
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
-the now filtered \code{duckdb_relation} object
+the now filtered relation object
 }
 \description{
 TBD.

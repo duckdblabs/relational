@@ -32,7 +32,7 @@ rel_to_df <- function(rel, ...) {
 #'
 #' @inheritParams rel_to_df
 #' @param exprs a list of DuckDB expressions to filter by
-#' @return the now filtered `duckdb_relation` object
+#' @return the now filtered relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -47,7 +47,7 @@ rel_filter <- function(rel, exprs, ...) {
 #'
 #' @inheritParams rel_to_df
 #' @param exprs a list of DuckDB expressions to project
-#' @return the now projected `duckdb_relation` object
+#' @return the now projected relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -63,7 +63,7 @@ rel_project <- function(rel, exprs, ...) {
 #' @inheritParams rel_to_df
 #' @param groups a list of DuckDB expressions to group by
 #' @param aggregates a (optionally named) list of DuckDB expressions with aggregates to compute
-#' @return the now aggregated `duckdb_relation` object
+#' @return the now aggregated relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -79,7 +79,7 @@ rel_aggregate <- function(rel, groups, aggregates, ...) {
 #'
 #' @inheritParams rel_to_df
 #' @param orders a list of DuckDB expressions to order by
-#' @return the now aggregated `duckdb_relation` object
+#' @return the now aggregated relation object
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -96,7 +96,7 @@ rel_order <- function(rel, orders, ...) {
 #' @param left the left-hand-side relation object
 #' @param right the right-hand-side relation object
 #' @param conds a list of DuckDB expressions to use for the join
-#' @return a new `duckdb_relation` object resulting from the join
+#' @return a new relation object resulting from the join
 #' @export
 #' @examples
 #' left <- rel_from_df(mtcars)
@@ -122,7 +122,7 @@ rel_limit <- function(rel, n, ...) {
 #' TBD.
 #'
 #' @inheritParams rel_to_df
-#' @return a new `duckdb_relation` object with distinct rows
+#' @return a new relation object with distinct rows
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)

@@ -12,7 +12,7 @@ rel_distinct(rel, ...)
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
-a new \code{duckdb_relation} object with distinct rows
+a new relation object with distinct rows
 }
 \description{
 TBD.

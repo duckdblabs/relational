@@ -14,7 +14,7 @@ rel_project(rel, exprs, ...)
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
-the now projected \code{duckdb_relation} object
+the now projected relation object
 }
 \description{
 TBD.

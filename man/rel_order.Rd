@@ -14,7 +14,7 @@ rel_order(rel, orders, ...)
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
-the now aggregated \code{duckdb_relation} object
+the now aggregated relation object
 }
 \description{
 TBD.
