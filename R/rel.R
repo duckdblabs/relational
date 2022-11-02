@@ -5,7 +5,6 @@
 #' @param ... Passed on to [structure()]
 #' @param class Classes added in front of the `"relational"` base class
 #'
-#' @name rel
 #' @export
 new_relational <- function(..., class = NULL) {
   structure(..., class = unique(c(class, "relational")))
@@ -112,6 +111,7 @@ rel_inner_join <- function(left, right, conds, ...) {
 #' TBD.
 #'
 #' @inheritParams rel_to_df
+#' @param n The number of rows.
 #' @export
 rel_limit <- function(rel, n, ...) {
   UseMethod("rel_limit")
@@ -131,6 +131,11 @@ rel_distinct <- function(rel, ...) {
   UseMethod("rel_distinct")
 }
 
+#' TBD
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @rdname rel
 #' @export
 rel_tostring <- function(rel, ...) {

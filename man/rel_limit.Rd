@@ -9,6 +9,8 @@ rel_limit(rel, n, ...)
 \arguments{
 \item{rel}{The relation object.}
 
+\item{n}{The number of rows.}
+
 \item{...}{Reserved for future extensions, must be empty.}
 }
 \description{
