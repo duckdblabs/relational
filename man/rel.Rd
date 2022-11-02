@@ -4,17 +4,8 @@
 \alias{rel}
 \alias{new_relational}
 \alias{rel_to_df}
-\alias{rel_filter}
-\alias{rel_project}
-\alias{rel_aggregate}
-\alias{rel_order}
-\alias{rel_inner_join}
 \alias{rel_limit}
-\alias{rel_distinct}
 \alias{rel_tostring}
-\alias{rel_explain}
-\alias{rel_alias}
-\alias{rel_set_alias}
 \alias{rel_names}
 \title{Relational API}
 \usage{
@@ -22,27 +13,9 @@ new_relational(..., class = NULL)
 
 rel_to_df(rel)
 
-rel_filter(rel, exprs)
-
-rel_project(rel, exprs)
-
-rel_aggregate(rel, groups, aggregates)
-
-rel_order(rel, orders)
-
-rel_inner_join(left, right, conds)
-
 rel_limit(rel, n)
 
-rel_distinct(rel)
-
 rel_tostring(rel)
-
-rel_explain(rel)
-
-rel_alias(rel)
-
-rel_set_alias(rel, alias)
 
 rel_names(rel)
 }
