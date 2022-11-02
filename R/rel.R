@@ -17,7 +17,7 @@ rel_from_df <- function(df) {
 
 #' @rdname rel
 #' @export
-rel_to_df <- function(rel) {
+rel_to_df <- function(rel, ...) {
   UseMethod("rel_to_df")
 }
 
@@ -29,7 +29,7 @@ rel_to_df <- function(rel) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel2 <- rel_filter(rel, list(expr_function("gt", list(expr_reference("cyl"), expr_constant("6")))))
-rel_filter <- function(rel, exprs) {
+rel_filter <- function(rel, exprs, ...) {
   UseMethod("rel_filter")
 }
 
@@ -41,7 +41,7 @@ rel_filter <- function(rel, exprs) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel2 <- rel_project(rel, list(expr_reference("cyl"), expr_reference("disp")))
-rel_project <- function(rel, exprs) {
+rel_project <- function(rel, exprs, ...) {
   UseMethod("rel_project")
 }
 
@@ -55,7 +55,7 @@ rel_project <- function(rel, exprs) {
 #' rel <- rel_from_df(mtcars)
 #' aggrs <- list(avg_hp = expr_function("avg", list(expr_reference("hp"))))
 #' rel2 <- rel_aggregate(rel, list(expr_reference("cyl")), aggrs)
-rel_aggregate <- function(rel, groups, aggregates) {
+rel_aggregate <- function(rel, groups, aggregates, ...) {
   UseMethod("rel_aggregate")
 }
 
@@ -67,7 +67,7 @@ rel_aggregate <- function(rel, groups, aggregates) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel2 <- rel_order(rel, list(expr_reference("hp")))
-rel_order <- function(rel, orders) {
+rel_order <- function(rel, orders, ...) {
   UseMethod("rel_order")
 }
 
@@ -82,13 +82,13 @@ rel_order <- function(rel, orders) {
 #' right <- rel_from_df(mtcars)
 #' cond <- list(expr_function("eq", list(expr_reference("cyl", left), expr_reference("cyl", right))))
 #' rel2 <- rel_inner_join(left, right, cond)
-rel_inner_join <- function(left, right, conds) {
+rel_inner_join <- function(left, right, conds, ...) {
   UseMethod("rel_inner_join")
 }
 
 #' @rdname rel
 #' @export
-rel_limit <- function(rel, n) {
+rel_limit <- function(rel, n, ...) {
   UseMethod("rel_limit")
 }
 
@@ -99,13 +99,13 @@ rel_limit <- function(rel, n) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel2 <- rel_distinct(rel)
-rel_distinct <- function(rel) {
+rel_distinct <- function(rel, ...) {
   UseMethod("rel_distinct")
 }
 
 #' @rdname rel
 #' @export
-rel_tostring <- function(rel) {
+rel_tostring <- function(rel, ...) {
   UseMethod("rel_tostring")
 }
 
@@ -115,7 +115,7 @@ rel_tostring <- function(rel) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel_explain(rel)
-rel_explain <- function(rel) {
+rel_explain <- function(rel, ...) {
   UseMethod("rel_explain")
 }
 
@@ -125,7 +125,7 @@ rel_explain <- function(rel) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel_alias(rel)
-rel_alias <- function(rel) {
+rel_alias <- function(rel, ...) {
   UseMethod("rel_alias")
 }
 
@@ -136,13 +136,13 @@ rel_alias <- function(rel) {
 #' @examples
 #' rel <- rel_from_df(mtcars)
 #' rel_set_alias(rel, "my_new_alias")
-rel_set_alias <- function(rel, alias) {
+rel_set_alias <- function(rel, alias, ...) {
   UseMethod("rel_set_alias")
 }
 
 #' @rdname rel
 #' @export
-rel_names <- function(rel) {
+rel_names <- function(rel, ...) {
   UseMethod("rel_names")
 }
 
