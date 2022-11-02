@@ -31,5 +31,5 @@ print.relational_expr <- function(expr, ...) {
 #' @export
 format.relational_expr <- function(expr, ...) {
   # FIXME: Use home-grown code
-  capture.output(print(constructive::construct(expr)))
+  utils::capture.output(print(constructive::construct(expr)))
 }
