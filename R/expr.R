@@ -35,12 +35,12 @@ expr_function <- function(name, args, alias = NULL) {
 }
 
 #' @export
-print.relational_expr <- function(expr, ...) {
-  writeLines(format(expr, ...))
+print.relational_expr <- function(x, ...) {
+  writeLines(format(x, ...))
 }
 
 #' @export
-format.relational_expr <- function(expr, ...) {
+format.relational_expr <- function(x, ...) {
   # FIXME: Use home-grown code
-  utils::capture.output(print(constructive::construct(expr)))
+  utils::capture.output(print(constructive::construct(x)))
 }
