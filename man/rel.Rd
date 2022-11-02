@@ -15,7 +15,6 @@
 \alias{rel_explain}
 \alias{rel_alias}
 \alias{rel_set_alias}
-\alias{rel_sql}
 \alias{rel_names}
 \title{Relational API}
 \usage{
@@ -44,8 +43,6 @@ rel_explain(rel)
 rel_alias(rel)
 
 rel_set_alias(rel, alias)
-
-rel_sql(rel, sql)
 
 rel_names(rel)
 }

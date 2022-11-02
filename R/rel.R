@@ -69,28 +69,35 @@ rel_tostring <- function(rel) {
   UseMethod("rel_tostring")
 }
 
-#' @rdname rel
+#' Print the EXPLAIN output for a DuckDB relation object
+#' @param rel the DuckDB relation object
 #' @export
+#' @examples
+#' rel <- rel_from_df(mtcars)
+#' rel_explain(rel)
 rel_explain <- function(rel) {
   UseMethod("rel_explain")
 }
 
-#' @rdname rel
+#' Get the internal alias for a DuckDB relation object
+#' @param rel the DuckDB relation object
 #' @export
+#' @examples
+#' rel <- rel_from_df(mtcars)
+#' rel_alias(rel)
 rel_alias <- function(rel) {
   UseMethod("rel_alias")
 }
 
-#' @rdname rel
+#' Set the internal alias for a DuckDB relation object
+#' @param rel the DuckDB relation object
+#' @param alias the new alias
 #' @export
+#' @examples
+#' rel <- rel_from_df(mtcars)
+#' rel_set_alias(rel, "my_new_alias")
 rel_set_alias <- function(rel, alias) {
   UseMethod("rel_set_alias")
-}
-
-#' @rdname rel
-#' @export
-rel_sql <- function(rel, sql) {
-  UseMethod("rel_sql")
 }
 
 #' @rdname rel

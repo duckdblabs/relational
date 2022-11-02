@@ -59,11 +59,6 @@ rel_set_alias.relational_df <- function(rel, alias) {
 }
 
 #' @export
-rel_sql.relational_df <- function(rel, sql) {
-  stop("NYI")
-}
-
-#' @export
 rel_names.relational_df <- function(rel) {
   stop("NYI")
 }
