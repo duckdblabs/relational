@@ -1,6 +1,6 @@
 #' @export
 rel_to_df.relational_df <- function(rel) {
-  stop("NYI")
+  rel[[1L]]
 }
 
 #' @export
