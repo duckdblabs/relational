@@ -7,10 +7,12 @@
 rel_alias(rel, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \description{
-Get the internal alias for a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)

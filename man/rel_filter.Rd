@@ -7,15 +7,17 @@
 rel_filter(rel, exprs, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
 
 \item{exprs}{a list of DuckDB expressions to filter by}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
 the now filtered \code{duckdb_relation} object
 }
 \description{
-Lazily filter a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)

@@ -7,15 +7,17 @@
 rel_project(rel, exprs, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
 
 \item{exprs}{a list of DuckDB expressions to project}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
 the now projected \code{duckdb_relation} object
 }
 \description{
-Lazily project a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)

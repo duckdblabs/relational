@@ -12,12 +12,14 @@ rel_inner_join(left, right, conds, ...)
 \item{right}{the right-hand-side relation object}
 
 \item{conds}{a list of DuckDB expressions to use for the join}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
 a new \code{duckdb_relation} object resulting from the join
 }
 \description{
-Lazily INNER join two relation objects
+TBD.
 }
 \examples{
 left <- rel_from_df(mtcars)

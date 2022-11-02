@@ -11,14 +11,26 @@ new_relational <- function(..., class = NULL) {
   structure(..., class = unique(c(class, "relational")))
 }
 
-#' @rdname rel
+#' Convert a relation object to a data frame
+#'
+#' TBD.
+#'
+#' @param rel The relation object.
+#' @param ... Reserved for future extensions, must be empty.
+#' @return A data frame.
 #' @export
+#' @examples
+#' rel <- rel_from_df(mtcars)
+#' rel2 <- rel_filter(rel, list(expr_function("gt", list(expr_reference("cyl"), expr_constant("6")))))
 rel_to_df <- function(rel, ...) {
   UseMethod("rel_to_df")
 }
 
 #' Lazily filter a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param exprs a list of DuckDB expressions to filter by
 #' @return the now filtered `duckdb_relation` object
 #' @export
@@ -30,7 +42,10 @@ rel_filter <- function(rel, exprs, ...) {
 }
 
 #' Lazily project a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param exprs a list of DuckDB expressions to project
 #' @return the now projected `duckdb_relation` object
 #' @export
@@ -42,7 +57,10 @@ rel_project <- function(rel, exprs, ...) {
 }
 
 #' Lazily aggregate a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param groups a list of DuckDB expressions to group by
 #' @param aggregates a (optionally named) list of DuckDB expressions with aggregates to compute
 #' @return the now aggregated `duckdb_relation` object
@@ -56,7 +74,10 @@ rel_aggregate <- function(rel, groups, aggregates, ...) {
 }
 
 #' Lazily reorder a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param orders a list of DuckDB expressions to order by
 #' @return the now aggregated `duckdb_relation` object
 #' @export
@@ -68,6 +89,10 @@ rel_order <- function(rel, orders, ...) {
 }
 
 #' Lazily INNER join two relation objects
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param left the left-hand-side relation object
 #' @param right the right-hand-side relation object
 #' @param conds a list of DuckDB expressions to use for the join
@@ -82,14 +107,21 @@ rel_inner_join <- function(left, right, conds, ...) {
   UseMethod("rel_inner_join")
 }
 
-#' @rdname rel
+#' Lazily limit the rows in a relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @export
 rel_limit <- function(rel, n, ...) {
   UseMethod("rel_limit")
 }
 
 #' Lazily compute a distinct result on a relation object
-#' @param rel the input relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @return a new `duckdb_relation` object with distinct rows
 #' @export
 #' @examples
@@ -106,7 +138,10 @@ rel_tostring <- function(rel, ...) {
 }
 
 #' Print the EXPLAIN output for a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -116,7 +151,10 @@ rel_explain <- function(rel, ...) {
 }
 
 #' Get the internal alias for a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @export
 #' @examples
 #' rel <- rel_from_df(mtcars)
@@ -126,7 +164,10 @@ rel_alias <- function(rel, ...) {
 }
 
 #' Set the internal alias for a relation object
-#' @param rel the relation object
+#'
+#' TBD.
+#'
+#' @inheritParams rel_to_df
 #' @param alias the new alias
 #' @export
 #' @examples

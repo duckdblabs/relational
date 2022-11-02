@@ -7,15 +7,17 @@
 rel_order(rel, orders, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
 
 \item{orders}{a list of DuckDB expressions to order by}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
 the now aggregated \code{duckdb_relation} object
 }
 \description{
-Lazily reorder a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)

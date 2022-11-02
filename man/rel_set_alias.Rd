@@ -7,12 +7,14 @@
 rel_set_alias(rel, alias, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
 
 \item{alias}{the new alias}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \description{
-Set the internal alias for a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)

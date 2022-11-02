@@ -3,17 +3,11 @@
 \name{rel}
 \alias{rel}
 \alias{new_relational}
-\alias{rel_to_df}
-\alias{rel_limit}
 \alias{rel_tostring}
 \alias{rel_names}
 \title{Relational API}
 \usage{
 new_relational(..., class = NULL)
-
-rel_to_df(rel, ...)
-
-rel_limit(rel, n, ...)
 
 rel_tostring(rel, ...)
 

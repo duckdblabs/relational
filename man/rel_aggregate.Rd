@@ -7,17 +7,19 @@
 rel_aggregate(rel, groups, aggregates, ...)
 }
 \arguments{
-\item{rel}{the relation object}
+\item{rel}{The relation object.}
 
 \item{groups}{a list of DuckDB expressions to group by}
 
 \item{aggregates}{a (optionally named) list of DuckDB expressions with aggregates to compute}
+
+\item{...}{Reserved for future extensions, must be empty.}
 }
 \value{
 the now aggregated \code{duckdb_relation} object
 }
 \description{
-Lazily aggregate a relation object
+TBD.
 }
 \examples{
 rel <- rel_from_df(mtcars)
