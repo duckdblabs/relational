@@ -4,7 +4,7 @@
 \alias{rel_set_alias}
 \title{Set the internal alias for a DuckDB relation object}
 \usage{
-rel_set_alias(rel, alias)
+rel_set_alias(rel, alias, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

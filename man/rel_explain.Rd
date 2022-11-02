@@ -4,7 +4,7 @@
 \alias{rel_explain}
 \title{Print the EXPLAIN output for a DuckDB relation object}
 \usage{
-rel_explain(rel)
+rel_explain(rel, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

@@ -11,13 +11,18 @@
 \usage{
 new_relational(..., class = NULL)
 
-rel_to_df(rel)
+rel_to_df(rel, ...)
 
-rel_limit(rel, n)
+rel_limit(rel, n, ...)
 
-rel_tostring(rel)
+rel_tostring(rel, ...)
 
-rel_names(rel)
+rel_names(rel, ...)
+}
+\arguments{
+\item{...}{Passed on to \code{\link[=structure]{structure()}}}
+
+\item{class}{Classes added in front of the \code{"relational"} base class}
 }
 \description{
 TBD.

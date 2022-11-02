@@ -4,7 +4,7 @@
 \alias{rel_inner_join}
 \title{Lazily INNER join two DuckDB relation objects}
 \usage{
-rel_inner_join(left, right, conds)
+rel_inner_join(left, right, conds, ...)
 }
 \arguments{
 \item{left}{the left-hand-side DuckDB relation object}

@@ -4,7 +4,7 @@
 \alias{rel_project}
 \title{Lazily project a DuckDB relation object}
 \usage{
-rel_project(rel, exprs)
+rel_project(rel, exprs, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

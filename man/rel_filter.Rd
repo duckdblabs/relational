@@ -4,7 +4,7 @@
 \alias{rel_filter}
 \title{Lazily filter a DuckDB relation object}
 \usage{
-rel_filter(rel, exprs)
+rel_filter(rel, exprs, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

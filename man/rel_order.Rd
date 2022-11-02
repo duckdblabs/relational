@@ -4,7 +4,7 @@
 \alias{rel_order}
 \title{Lazily reorder a DuckDB relation object}
 \usage{
-rel_order(rel, orders)
+rel_order(rel, orders, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

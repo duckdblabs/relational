@@ -4,7 +4,7 @@
 \alias{rel_alias}
 \title{Get the internal alias for a DuckDB relation object}
 \usage{
-rel_alias(rel)
+rel_alias(rel, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}

@@ -4,7 +4,7 @@
 \alias{rel_distinct}
 \title{Lazily compute a distinct result on a DuckDB relation object}
 \usage{
-rel_distinct(rel)
+rel_distinct(rel, ...)
 }
 \arguments{
 \item{rel}{the input DuckDB relation object}

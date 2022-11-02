@@ -4,7 +4,7 @@
 \alias{rel_aggregate}
 \title{Lazily aggregate a DuckDB relation object}
 \usage{
-rel_aggregate(rel, groups, aggregates)
+rel_aggregate(rel, groups, aggregates, ...)
 }
 \arguments{
 \item{rel}{the DuckDB relation object}
