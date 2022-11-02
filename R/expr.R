@@ -9,25 +9,18 @@ new_expr <- function(x, class = NULL) {
 }
 
 #' @export
-expr_reference <- function(name, rel = NULL) {
-  new_expr(list(name = name), class = "relational_expr_reference")
+expr_reference <- function(name, rel = NULL, alias = NULL) {
+  new_expr(list(name = name, alias = alias), class = "relational_expr_reference")
 }
 
 #' @export
-expr_constant <- function(val) {
-  new_expr(list(val = val), class = "relational_expr_constant")
+expr_constant <- function(val, alias = NULL) {
+  new_expr(list(val = val, alias = alias), class = "relational_expr_constant")
 }
 
 #' @export
-expr_function <- function(name, args) {
-  new_expr(list(name = name, args = args), class = "relational_expr_function")
-}
-
-#' @export
-expr_alias <- function(expr, alias) {
-  expr <- unclass(expr)
-  expr[["alias"]] <- alias
-  new_expr(expr)
+expr_function <- function(name, args, alias = NULL) {
+  new_expr(list(name = name, args = args, alias = alias), class = "relational_expr_function")
 }
 
 #' @export
