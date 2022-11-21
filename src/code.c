@@ -47,9 +47,26 @@ void set_row_names(SEXP vec, SEXP val) {
   SET_ATTRIB(vec, attrib_cell);
 }
 
+static SEXP promise(SEXP f) {
+    SEXP prom = PROTECT(Rf_allocSExp(PROMSXP));
+    SET_PRENV(prom, R_EmptyEnv);
+    SET_PRCODE(prom, Rf_lang1(f));
+    SET_PRVALUE(prom, R_UnboundValue);
+    UNPROTECT(1);
+    return prom;
+}
+
+static SEXP is_promise(SEXP p) {
+    return Rf_ScalarLogical(TYPEOF(p) == PROMSXP);
+}
+
+
 #define CALLDEF(name, n)  {#name, (DL_FUNC) &name, n}
 static const R_CallMethodDef R_CallDef[] = {
   CALLDEF(chunkrep_wrap, 1),
+  CALLDEF(promise, 1),
+  CALLDEF(is_promise, 1),
+
   CALLDEF(set_row_names, 2),
   {NULL, NULL, 0}
 };
@@ -60,7 +77,6 @@ void R_init_relational(DllInfo *dll) {
 
   R_set_altrep_Inspect_method         (cls, chunkrep_inspect);
   R_set_altrep_Length_method          (cls, chunkrep_length);
-
   R_set_altvec_Dataptr_method         (cls, chunkrep_dataptr);
 
   chunkrep_integer_class = cls;
