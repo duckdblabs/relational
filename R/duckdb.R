@@ -34,7 +34,8 @@ duckdb_rel_from_df <- function(df) {
 #' @export
 rel_to_df.duckdb_relation <- function(rel, ...) {
   out <- duckdb:::rel_to_altrep(rel)
-  attr(out, "rel") <- rel
+  # FIXME: Hide pointer in ALTREP's data2
+  # attr(out, "rel") <- rel
   out
 }
 
