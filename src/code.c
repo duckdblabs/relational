@@ -74,9 +74,18 @@ static void copy_df_attribs(SEXP template, SEXP result) {
         Rf_error("Need non-NULL parameters");
     }
 
-    // get existing names and row names
-    SEXP names = Rf_getAttrib(result, R_NamesSymbol);
-    SEXP row_names = Rf_getAttrib(result, R_RowNamesSymbol);
+    // get existing names and row names, circumventing R's logic
+    SEXP names = R_NilValue;
+    SEXP row_names = R_NilValue;
+
+    for (SEXP attr = ATTRIB(result); attr != R_NilValue; attr = CDR(attr)) {
+        SEXP tag = TAG(attr);
+        if (tag == R_NamesSymbol) {
+            names = CAR(attr);
+        } else if (tag == R_RowNamesSymbol) {
+            row_names = CAR(attr);
+        }
+    }
 
     // clear all attributes on target
     SET_ATTRIB(result, R_NilValue);
@@ -90,12 +99,17 @@ static void copy_df_attribs(SEXP template, SEXP result) {
     }
 
     // add attributes from template that are *not* names or row.names
-    for (SEXP attrib = ATTRIB(template); attrib != R_NilValue; attrib = CDR(attrib)) {
-        if (TAG(attrib) == R_NamesSymbol ||
-            TAG(attrib) == R_RowNamesSymbol) {
-            continue;
+    for (SEXP attr = ATTRIB(template); attr != R_NilValue; attr = CDR(attr)) {
+        SEXP tag = TAG(attr);
+        if (tag == R_NamesSymbol) {
+            set_attrib(result, tag, names);
+            names = R_NilValue;
+        } else if (tag == R_RowNamesSymbol) {
+            set_attrib(result, tag, row_names);
+            row_names = R_NilValue;
+        } else {
+            set_attrib(result, tag, CAR(attr));
         }
-        set_attrib(result, TAG(attrib), CAR(attrib));
     }
 }
 
