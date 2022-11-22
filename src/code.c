@@ -40,11 +40,64 @@ static void* chunkrep_dataptr(SEXP x, Rboolean writeable) {
   return DATAPTR(R_altrep_data1(x));
 }
 
+
+//LISTSXP
+//Pointers to the CAR, CDR (usually a LISTSXP or NULL) and TAG (a SYMSXP or NULL).
+
+// https://github.com/hadley/r-internals/blob/master/pairlists.md
+
+
 void set_row_names(SEXP vec, SEXP val) {
   SEXP attrib_vec = ATTRIB(vec);
   SEXP attrib_cell = Rf_cons(val, attrib_vec);
   SET_TAG(attrib_cell, R_RowNamesSymbol);
   SET_ATTRIB(vec, attrib_cell);
+}
+
+// mostly installAttrib from attrib.c
+static void set_attrib(SEXP s, SEXP name, SEXP val) {
+    SEXP last_attrib = R_NilValue;
+    for (SEXP attrib = ATTRIB(s); attrib != R_NilValue; attrib = CDR(attrib)) {
+        last_attrib = attrib;
+    }
+    SEXP new_attrib = PROTECT(Rf_cons(val, R_NilValue));
+    SET_TAG(new_attrib, name);
+    if (ATTRIB(s) == R_NilValue) {
+        SET_ATTRIB(s, new_attrib);
+    } else  {
+        SETCDR(last_attrib, new_attrib);
+    }
+    UNPROTECT(1);
+}
+
+static void copy_df_attribs(SEXP template, SEXP result) {
+    if (result == R_NilValue || result == R_NilValue) {
+        Rf_error("Need non-NULL parameters");
+    }
+
+    // get existing names and row names
+    SEXP names = Rf_getAttrib(result, R_NamesSymbol);
+    SEXP row_names = Rf_getAttrib(result, R_RowNamesSymbol);
+
+    // clear all attributes on target
+    SET_ATTRIB(result, R_NilValue);
+
+    // restore names and row names
+    if (names != R_NilValue) {
+        set_attrib(result, R_NamesSymbol, names);
+    }
+    if (row_names != R_NilValue) {
+        set_attrib(result, R_RowNamesSymbol, row_names);
+    }
+
+    // add attributes from template that are *not* names or row.names
+    for (SEXP attrib = ATTRIB(template); attrib != R_NilValue; attrib = CDR(attrib)) {
+        if (TAG(attrib) == R_NamesSymbol ||
+            TAG(attrib) == R_RowNamesSymbol) {
+            continue;
+        }
+        set_attrib(result, TAG(attrib), CAR(attrib));
+    }
 }
 
 static SEXP promise(SEXP f) {
@@ -66,6 +119,7 @@ static const R_CallMethodDef R_CallDef[] = {
   CALLDEF(chunkrep_wrap, 1),
   CALLDEF(promise, 1),
   CALLDEF(is_promise, 1),
+  CALLDEF(copy_df_attribs, 2),
 
   CALLDEF(set_row_names, 2),
   {NULL, NULL, 0}
