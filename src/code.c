@@ -32,8 +32,7 @@ static R_xlen_t chunkrep_length(SEXP x) {
 
 static void* chunkrep_dataptr(SEXP x, Rboolean writeable) {
   if (R_altrep_data2(x) == R_NilValue) {
-    Rprintf("⚠️ DATAPTR()\n");
-    Rf_PrintValue(R_altrep_data1(x));
+    Rf_warning("DATAPTR: %p", R_altrep_data1(x));
     R_set_altrep_data2(x, R_RowNamesSymbol);
   }
   return DATAPTR(R_altrep_data1(x));

@@ -1,14 +1,16 @@
 test_that("attribute copy works as expected", {
-    df <- data.frame(a=1:10)
+    df <- data.frame(a = 1:10)
     attr(df, "asdf") <- 42
 
-    df2 <- wrap_df(data.frame(b=1:20))
+    df1 <- data.frame(b = 1:20)
+
+    df2 <- wrap_df(df1)
     attr(df2, "fdsa") <- 42
 
-    old_names <- names(df2)
-    old_rownames <- row.names(df2)
-
-    .Call(relational:::copy_df_attribs, df, df2)
+    expect_warning(
+      .Call(relational:::copy_df_attribs, df, df2),
+      NA
+    )
 
     # attrs from df2 disappear
     expect_null(attr(df2, "fdsa"))
@@ -16,6 +18,14 @@ test_that("attribute copy works as expected", {
     expect_equal(attr(df2, "asdf"), 42)
 
     # names and row.names are untouched
-    expect_equal(names(df2), old_names)
-    expect_equal(row.names(df2), old_rownames)
+    expect_warning(
+      expect_equal(names(df2), names(df1)),
+      NA
+    )
+
+    # materialization happens only when touching row names
+    expect_warning(
+      expect_equal(row.names(df2), row.names(df1)),
+      "DATAPTR"
+    )
 })
