@@ -3,7 +3,7 @@
     Code
       expr_reference("column")
     Output
-      list(name = "column", alias = NULL) |>
+      list(name = "column", rel = NULL, alias = NULL) |>
         structure(class = c("relational_expr_reference", "relational_expr"))
     Code
       expr_constant(42)
@@ -16,7 +16,7 @@
       list(
         name = "+",
         args = list(
-          list(name = "column", alias = NULL) |>
+          list(name = "column", rel = NULL, alias = NULL) |>
             structure(class = c("relational_expr_reference", "relational_expr")),
           list(val = 42, alias = "fortytwo") |>
             structure(class = c("relational_expr_constant", "relational_expr"))
