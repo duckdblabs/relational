@@ -8,7 +8,7 @@ test_that("attribute copy works as expected", {
     attr(df2, "fdsa") <- 42
 
     expect_warning(
-      .Call(relational:::copy_df_attribs, df, df2),
+      .Call(relational:::copy_df_attribs, df2, df),
       NA
     )
 

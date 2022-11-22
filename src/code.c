@@ -68,7 +68,7 @@ static void set_attrib(SEXP s, SEXP name, SEXP val) {
     UNPROTECT(1);
 }
 
-static void copy_df_attribs(SEXP template, SEXP result) {
+static void copy_df_attribs(SEXP result, SEXP template) {
     if (result == R_NilValue || result == R_NilValue) {
         Rf_error("Need non-NULL parameters");
     }
