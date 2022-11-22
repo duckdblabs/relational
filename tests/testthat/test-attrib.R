@@ -2,7 +2,7 @@ test_that("attribute copy works as expected", {
     df <- data.frame(a=1:10)
     attr(df, "asdf") <- 42
 
-    df2 <- data.frame(b=1:20)
+    df2 <- wrap_df(data.frame(b=1:20))
     attr(df2, "fdsa") <- 42
 
     old_names <- names(df2)
