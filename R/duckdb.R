@@ -34,7 +34,8 @@ duckdb_rel_from_df <- function(df) {
 #' @export
 rel_to_df.duckdb_relation <- function(rel, ...) {
   out <- duckdb:::rel_to_altrep(rel)
-  attr(out, "rel") <- rel
+  # FIXME: Hide pointer in ALTREP's data2
+  # attr(out, "rel") <- rel
   out
 }
 
@@ -44,6 +45,9 @@ rel_filter.duckdb_relation <- function(rel, exprs, ...) {
 
 #' @export
 rel_project.duckdb_relation <- function(rel, exprs, ...) {
+  out <- duckdb:::rel_project(rel, to_duckdb_exprs(exprs))
+  attr(out, "rel") <- rel
+  out
 }
 
 #' @export
@@ -87,3 +91,17 @@ rel_set_alias.duckdb_relation <- function(rel, alias, ...) {
 rel_names.duckdb_relation <- function(rel, ...) {
 }
 
+to_duckdb_exprs <- function(exprs) {
+  lapply(exprs, to_duckdb_expr)
+}
+
+to_duckdb_expr <- function(x) {
+  switch(class(x)[[1]],
+    relational_expr_reference = {
+      out <- duckdb:::expr_reference(x$name, if (is.null(x$rel)) "" else x$rel)
+      duckdb:::expr_set_alias(out, x$alias)
+      out
+    },
+    default = stop("Unknown expr class: ", class(x)[[1]])
+  )
+}

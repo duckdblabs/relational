@@ -17,7 +17,7 @@ new_expr <- function(x, class = NULL) {
 #' @rdname expr
 #' @export
 expr_reference <- function(name, rel = NULL, alias = NULL) {
-  new_expr(list(name = name, alias = alias), class = "relational_expr_reference")
+  new_expr(list(name = name, rel = rel, alias = alias), class = "relational_expr_reference")
 }
 
 #' @param val The value to use in the constant expression.

@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
-#include <sys/mman.h>
 
 #include <Rdefines.h>
 #include <R_ext/Altrep.h>
