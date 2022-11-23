@@ -17,9 +17,9 @@ get_default_duckdb_connection <- function() {
 
     default_duckdb_connection$con <- con
 
-    reg.finalizer(default_duckdb_connection, function(e) {
-      DBI::dbDisconnect(e$con, shutdown=TRUE)
-    }, onexit=TRUE)
+    reg.finalizer(default_duckdb_connection, onexit = TRUE, function(e) {
+      DBI::dbDisconnect(e$con, shutdown = TRUE)
+    })
   }
   default_duckdb_connection$con
 }
