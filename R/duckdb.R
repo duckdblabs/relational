@@ -23,10 +23,12 @@ duckdb_rel_from_df <- function(df) {
   # FIXME: make generic
   stopifnot(is.data.frame(df))
 
-  rel <- attr(df, "rel")
-  if (!is.null(rel) && inherits(rel, "duckdb_relation")) {
-    return(rel)
-  }
+  tryCatch(
+    if (!duckdb:::df_is_materialized(df)) {
+      return(duckdb:::rel_from_altrep_df(df))
+    },
+    error = function(e) {}
+  )
 
   duckdb:::rel_from_df(get_default_duckdb_connection(), df)
 }
