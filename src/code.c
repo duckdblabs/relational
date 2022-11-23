@@ -89,14 +89,6 @@ static void copy_df_attribs(SEXP result, SEXP template) {
     // clear all attributes on target
     SET_ATTRIB(result, R_NilValue);
 
-    // restore names and row names
-    if (names != R_NilValue) {
-        set_attrib(result, R_NamesSymbol, names);
-    }
-    if (row_names != R_NilValue) {
-        set_attrib(result, R_RowNamesSymbol, row_names);
-    }
-
     // add attributes from template that are *not* names or row.names
     for (SEXP attr = ATTRIB(template); attr != R_NilValue; attr = CDR(attr)) {
         SEXP tag = TAG(attr);
@@ -109,6 +101,14 @@ static void copy_df_attribs(SEXP result, SEXP template) {
         } else {
             set_attrib(result, tag, CAR(attr));
         }
+    }
+
+    // restore names and row names if not done yet
+    if (names != R_NilValue) {
+        set_attrib(result, R_NamesSymbol, names);
+    }
+    if (row_names != R_NilValue) {
+        set_attrib(result, R_RowNamesSymbol, row_names);
     }
 }
 
