@@ -1,9 +1,22 @@
+# To be moved to duckdb
+
 # singleton DuckDB instance since we need only one really
 # we need a finalizer to disconnect on exit otherwise we get a warning
 default_duckdb_connection <- new.env(parent=emptyenv())
 get_default_duckdb_connection <- function() {
   if(!exists("con", default_duckdb_connection)) {
-    default_duckdb_connection$con <- DBI::dbConnect(duckdb::duckdb())
+    con <- DBI::dbConnect(duckdb::duckdb())
+
+    DBI::dbExecute(con, 'CREATE MACRO "<"(a, b) AS a < b')
+    DBI::dbExecute(con, 'CREATE MACRO "<="(a, b) AS a <= b')
+    DBI::dbExecute(con, 'CREATE MACRO ">"(a, b) AS a > b')
+    DBI::dbExecute(con, 'CREATE MACRO ">="(a, b) AS a >= b')
+    DBI::dbExecute(con, 'CREATE MACRO "=="(a, b) AS a = b')
+    DBI::dbExecute(con, 'CREATE MACRO "!="(a, b) AS a <> b')
+    DBI::dbExecute(con, 'CREATE MACRO "is.na"(a) AS (a IS NULL)')
+
+    default_duckdb_connection$con <- con
+
     reg.finalizer(default_duckdb_connection, function(e) {
       DBI::dbDisconnect(e$con, shutdown=TRUE)
     }, onexit=TRUE)
@@ -35,21 +48,19 @@ duckdb_rel_from_df <- function(df) {
 
 #' @export
 rel_to_df.duckdb_relation <- function(rel, ...) {
-  out <- duckdb:::rel_to_altrep(rel)
-  # FIXME: Hide pointer in ALTREP's data2
-  # attr(out, "rel") <- rel
-  out
+  duckdb:::rel_to_altrep(rel)
 }
 
 #' @export
 rel_filter.duckdb_relation <- function(rel, exprs, ...) {
+  duckdb_exprs <- to_duckdb_exprs(exprs)
+  duckdb:::rel_filter(rel, duckdb_exprs)
 }
 
 #' @export
 rel_project.duckdb_relation <- function(rel, exprs, ...) {
-  out <- duckdb:::rel_project(rel, to_duckdb_exprs(exprs))
-  attr(out, "rel") <- rel
-  out
+  duckdb_exprs <- to_duckdb_exprs(exprs)
+  duckdb:::rel_project(rel, duckdb_exprs)
 }
 
 #' @export
@@ -101,9 +112,21 @@ to_duckdb_expr <- function(x) {
   switch(class(x)[[1]],
     relational_expr_reference = {
       out <- duckdb:::expr_reference(x$name, if (is.null(x$rel)) "" else x$rel)
-      duckdb:::expr_set_alias(out, x$alias)
+      if (!is.null(x$alias)) {
+        duckdb:::expr_set_alias(out, x$alias)
+      }
       out
     },
-    default = stop("Unknown expr class: ", class(x)[[1]])
+    relational_expr_function = {
+      duckdb:::expr_function(x$name, to_duckdb_exprs(x$args))
+    },
+    relational_expr_constant = {
+      out <- duckdb:::expr_constant(x$val)
+      if (!is.null(x$alias)) {
+        duckdb:::expr_set_alias(out, x$alias)
+      }
+      out
+    },
+    stop("Unknown expr class: ", class(x)[[1]])
   )
 }
