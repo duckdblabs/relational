@@ -43,6 +43,25 @@ duckdb_rel_from_df <- function(df) {
     error = function(e) {}
   )
 
+  # FIXME: Move to duckdb:::rel_from_df()
+
+  if (!identical(class(df), "data.frame") && !identical(class(df), c("tbl_df", "tbl", "data.frame"))) {
+    stop("Need data frame or tibble to convert to relational.")
+  }
+
+  for (i in seq_along(df)) {
+    col <- .subset2(df, i)
+    if (!is.null(names(col))) {
+      stop("Can't convert named vectors to relational. Affected column: `", names(df)[[i]], "`.")
+    }
+    if (!is.null(dim(col))) {
+      stop("Can't convert arrays or matrices to relational. Affected column: `", names(df)[[i]], "`.")
+    }
+    if (isS4(col)) {
+      stop("Can't convert S4 columns to relational. Affected column: `", names(df)[[i]], "`.")
+    }
+  }
+
   duckdb:::rel_from_df(get_default_duckdb_connection(), df)
 }
 
