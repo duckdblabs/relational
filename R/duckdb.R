@@ -138,6 +138,9 @@ to_duckdb_expr <- function(x) {
     },
     relational_expr_function = {
       duckdb:::expr_function(x$name, to_duckdb_exprs(x$args))
+      if (!is.null(x$alias)) {
+        duckdb:::expr_set_alias(out, x$alias)
+      }
     },
     relational_expr_constant = {
       out <- duckdb:::expr_constant(x$val)
