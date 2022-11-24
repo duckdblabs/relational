@@ -129,9 +129,9 @@ static SEXP is_promise(SEXP p) {
 #define CALLDEF(name, n)  {#name, (DL_FUNC) &name, n}
 static const R_CallMethodDef R_CallDef[] = {
   CALLDEF(chunkrep_wrap, 1),
+  CALLDEF(copy_df_attribs, 2),
   CALLDEF(promise, 1),
   CALLDEF(is_promise, 1),
-  CALLDEF(copy_df_attribs, 2),
 
   CALLDEF(set_row_names, 2),
   {NULL, NULL, 0}
