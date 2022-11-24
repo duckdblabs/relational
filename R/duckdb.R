@@ -49,6 +49,10 @@ duckdb_rel_from_df <- function(df) {
     stop("Need data frame or tibble to convert to relational.")
   }
 
+  if (is.character(.row_names_info(df, 0L))) {
+    stop("Need data frame without row names to convert to relational.")
+  }
+
   for (i in seq_along(df)) {
     col <- .subset2(df, i)
     if (!is.null(names(col))) {
