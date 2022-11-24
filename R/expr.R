@@ -34,6 +34,14 @@ expr_function <- function(name, args, alias = NULL) {
   new_expr(list(name = name, args = args, alias = alias), class = "relational_expr_function")
 }
 
+#' @param args Function arguments, a list of `expr` objects.
+#' @rdname expr
+#' @export
+expr_set_alias <- function(expr, alias = NULL) {
+  expr$alias <- alias
+  expr
+}
+
 #' @export
 print.relational_expr <- function(x, ...) {
   writeLines(format(x, ...))

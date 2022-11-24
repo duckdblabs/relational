@@ -6,6 +6,7 @@
 \alias{expr_reference}
 \alias{expr_constant}
 \alias{expr_function}
+\alias{expr_set_alias}
 \title{Relational expressions}
 \usage{
 new_expr(x, class = NULL)
@@ -15,6 +16,8 @@ expr_reference(name, rel = NULL, alias = NULL)
 expr_constant(val, alias = NULL)
 
 expr_function(name, args, alias = NULL)
+
+expr_set_alias(expr, alias = NULL)
 }
 \arguments{
 \item{x}{An object.}
