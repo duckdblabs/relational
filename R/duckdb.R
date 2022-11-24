@@ -37,7 +37,8 @@ duckdb_rel_from_df <- function(df) {
   stopifnot(is.data.frame(df))
 
   tryCatch(
-    if (!duckdb:::df_is_materialized(df)) {
+    {
+      # duckdb:::df_is_materialized() is broken and unneeded
       return(duckdb:::rel_from_altrep_df(df))
     },
     error = function(e) {}
