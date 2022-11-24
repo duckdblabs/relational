@@ -113,6 +113,7 @@ rel_tostring.duckdb_relation <- function(rel, ...) {
 
 #' @export
 rel_explain.duckdb_relation <- function(rel, ...) {
+  duckdb:::rel_explain(rel)
 }
 
 #' @export
