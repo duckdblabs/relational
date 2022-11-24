@@ -33,6 +33,8 @@ expr_set_alias(expr, alias = NULL)
 \item{val}{The value to use in the constant expression.}
 
 \item{args}{Function arguments, a list of \code{expr} objects.}
+
+\item{expr}{An \code{expr} object.}
 }
 \description{
 TBD.

@@ -34,7 +34,7 @@ expr_function <- function(name, args, alias = NULL) {
   new_expr(list(name = name, args = args, alias = alias), class = "relational_expr_function")
 }
 
-#' @param args Function arguments, a list of `expr` objects.
+#' @param expr An `expr` object.
 #' @rdname expr
 #' @export
 expr_set_alias <- function(expr, alias = NULL) {
